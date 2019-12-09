@@ -6,19 +6,19 @@ import random
 
 # functions
 def generatekey(clear):
-    key = ''.join([chr(random.randint(0,255)) for n in range(len(clear))])
+    key = ''.join([chr(random.randint(32,126)) for n in range(len(clear))])
     return key
 
 def encrypt(clear, key):
     crypted = ''
     for i in range(len(clear)):
-        crypted += chr((ord(clear[i])+ord(key[i]))%256)
+        crypted += chr((ord(clear[i])+ord(key[i]))%127)
     return crypted
 
 def decrypt(crypted, key):
     clear = ''
     for i in range(len(crypted)):
-        clear += chr((ord(crypted[i])-ord(key[i]))%256)
+        clear += chr((ord(crypted[i])-ord(key[i]))%127)
     return clear
 
 ######
