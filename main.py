@@ -4,31 +4,34 @@ import hashlib
 import string
 import random
 
-onlylower = string.ascii_lowercase
-letters = string.ascii_lowercase + string.whitespace
-
 # functions
 def generatekey(clear):
-    key = ''.join([random.choice(onlylower) for n in range(len(clear))])
+    key = ''.join([chr(random.randint(0,255)) for n in range(len(clear))])
     return key
 
-def encryption(clear, key):
+def encrypt(clear, key):
     crypted = ''
     for i in range(len(clear)):
-        crypted += onlylower[(onlylower.index(key[i]) + onlylower.index(clear[i])) % 26]
+        crypted += chr((ord(clear[i])+ord(key[i])%256))
     return crypted
 
 def decrypt(crypted, key):
+    clear = ''
+    for i in range(len(crypted)):
+        clear += chr((ord(crypted[i])-ord(key[i])%256))
     return clear
 
-#
-print(len(onlylower))
+######
 inputString = input("Enter a String to encrypt : ")
-print("Your message : ", inputString)
+print("Your message :", inputString)
 
 key = generatekey(inputString)
 print(key)
-print(encryption(inputString, key))
+encrypted = encrypt(inputString, key)
+print(encrypted)
+decrypted = decrypt(encrypted, key)
+print(decrypted)
+
 
 
 
