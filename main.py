@@ -12,13 +12,13 @@ def generatekey(clear):
 def encrypt(clear, key):
     crypted = ''
     for i in range(len(clear)):
-        crypted += chr((ord(clear[i])+ord(key[i])%256))
+        crypted += chr((ord(clear[i])+ord(key[i]))%256)
     return crypted
 
 def decrypt(crypted, key):
     clear = ''
     for i in range(len(crypted)):
-        clear += chr((ord(crypted[i])-ord(key[i])%256))
+        clear += chr((ord(crypted[i])-ord(key[i]))%256)
     return clear
 
 ######
