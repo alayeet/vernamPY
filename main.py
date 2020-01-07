@@ -31,11 +31,3 @@ encrypted = encrypt(inputString, key)
 print(encrypted)
 decrypted = decrypt(encrypted, key)
 print(decrypted)
-
-
-
-
-
-#génération du hash
-# hashString = hashlib.md5(str.encode(myString))
-# print("Et voici son hash : ", hashString.hexdigest())
